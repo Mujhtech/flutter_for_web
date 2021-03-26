@@ -55,7 +55,7 @@ Widget _buildUi(double width, BuildContext context) {
                   children: footerItems
                       .map(
                         (footerItem) => Container(
-                          height: 90.0,
+                          height: 120.0,
                           width: ScreenHelper.isMobile(context)
                               ? constraints.maxWidth / 2.0 - 20.0
                               : constraints.maxWidth / 4.0 - 20.0,

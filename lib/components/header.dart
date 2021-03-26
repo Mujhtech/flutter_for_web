@@ -4,22 +4,16 @@ import 'package:flutter_for_web/models/header_item.dart';
 import 'package:flutter_for_web/utils/globals.dart';
 import 'package:flutter_for_web/utils/screen_helper.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 List<HeaderItem> headerItems = [
-  HeaderItem(
-    title: "HOME",
-    onTap: () {},
-  ),
-  HeaderItem(title: "MY INTRO", onTap: () {}),
-  HeaderItem(title: "SERVICES", onTap: () {}),
-  HeaderItem(title: "PORTFOLIO", onTap: () {}),
-  HeaderItem(title: "TESTIMONIALS", onTap: () {}),
-  HeaderItem(title: "BLOGS", onTap: () {}),
-  HeaderItem(
-    title: "HIRE ME",
-    onTap: () {},
-    isButton: true,
-  ),
+  HeaderItem(title: "HOME", onTap: () {}, index: 0),
+  HeaderItem(title: "MY INTRO", onTap: () {}, index: 1),
+  HeaderItem(title: "SERVICES", onTap: () {}, index: 0),
+  HeaderItem(title: "PORTFOLIO", onTap: () {}, index: 0),
+  HeaderItem(title: "TESTIMONIALS", onTap: () {}, index: 0),
+  HeaderItem(title: "BLOGS", onTap: () {}, index: 0),
+  HeaderItem(title: "HIRE ME", onTap: () {}, isButton: true, index: 0),
 ];
 
 class HeaderLogo extends StatelessWidget {
@@ -30,27 +24,23 @@ class HeaderLogo extends StatelessWidget {
         cursor: SystemMouseCursors.click,
         child: GestureDetector(
           onTap: () {},
-          child: RichText(
-            text: TextSpan(
-              children: [
-                TextSpan(
-                  text: "M",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 32.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                TextSpan(
-                  text: ".",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 36.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                )
-              ],
-            ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                "< ",
+                style: TextStyle(fontSize: 20, color: Colors.white),
+              ),
+              Text(
+                "Mujeeb",
+                style: GoogleFonts.dancingScript(
+                    fontSize: 20, color: Colors.white),
+              ),
+              Text(
+                MediaQuery.of(context).size.width >= 1000 ? " />\t\t" : " />",
+                style: TextStyle(fontSize: 20, color: Colors.white),
+              )
+            ],
           ),
         ),
       ),
@@ -149,7 +139,7 @@ class Header extends StatelessWidget {
                 Globals.scaffoldKey.currentState.openEndDrawer();
               },
               child: Icon(
-                Icons.menu_open,
+                Icons.menu,
                 color: Colors.white,
                 size: 28.0,
               ),
