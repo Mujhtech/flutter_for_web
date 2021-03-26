@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_for_web/components/social_media.dart';
 import 'package:flutter_for_web/models/footer_item.dart';
 import 'package:flutter_for_web/utils/constants.dart';
 import 'package:flutter_for_web/utils/screen_helper.dart';
@@ -7,19 +8,19 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 final List<FooterItem> footerItems = [
   FooterItem(
-    iconPath: "assets/mappin.png",
+    iconPath: Icons.home,
     title: "ADDRESS",
-    text1: "999 Carter Street",
+    text1: "Federal University of Technology,\nMinna",
   ),
   FooterItem(
-    iconPath: "assets/email.png",
+    iconPath: Icons.email,
     title: "EMAIL",
-    text1: "hello@example.com",
+    text1: "mujeeb.muhideen@gmail.com",
   ),
   FooterItem(
-    iconPath: "assets/whatsapp.png",
+    iconPath: Icons.phone,
     title: "WHATSAPP",
-    text1: "+234 901-134-0095",
+    text1: "+234 7063148208",
   )
 ];
 
@@ -49,9 +50,8 @@ Widget _buildUi(double width, BuildContext context) {
             children: [
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 50.0),
-                child: Wrap(
-                  spacing: 20.0,
-                  runSpacing: 20.0,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: footerItems
                       .map(
                         (footerItem) => Container(
@@ -59,53 +59,42 @@ Widget _buildUi(double width, BuildContext context) {
                           width: ScreenHelper.isMobile(context)
                               ? constraints.maxWidth / 2.0 - 20.0
                               : constraints.maxWidth / 4.0 - 20.0,
+                          padding: EdgeInsets.symmetric(
+                              vertical: 8.0, horizontal: 12.0),
+                          margin: EdgeInsets.only(left: 10),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                          ),
                           child: Container(
                             child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Image.asset(
-                                      footerItem.iconPath,
-                                      width: 25.0,
-                                    ),
-                                    SizedBox(
-                                      width: 15.0,
-                                    ),
-                                    Text(
-                                      footerItem.title,
-                                      style: TextStyle(
-                                        fontSize: 18.0,
-                                        fontWeight: FontWeight.w700,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ],
+                                Icon(
+                                  footerItem.iconPath,
+                                  color: Color(0xFFBA0000),
+                                  size: 20,
+                                ),
+                                SizedBox(
+                                  width: 15.0,
+                                ),
+                                Text(
+                                  footerItem.title,
+                                  style: TextStyle(
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.w700,
+                                    color: Color(0xFFBA0000),
+                                  ),
                                 ),
                                 SizedBox(
                                   height: 15.0,
                                 ),
-                                RichText(
-                                  textAlign: TextAlign.start,
-                                  text: TextSpan(
-                                    children: [
-                                      TextSpan(
-                                        text: "${footerItem.text1}\n",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          height: 1.8,
-                                        ),
-                                      ),
-                                      TextSpan(
-                                        text: "${footerItem.text2}\n",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                        ),
-                                      )
-                                    ],
+                                Text(
+                                  "${footerItem.text1}",
+                                  style: TextStyle(
+                                    color: Color(0xFFBA0000),
+                                    height: 1.8,
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           ),
@@ -134,44 +123,7 @@ Widget _buildUi(double width, BuildContext context) {
                       ),
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      GestureDetector(
-                        onTap: () {},
-                        child: MouseRegion(
-                          cursor: SystemMouseCursors.click,
-                          child: Text(
-                            "Privacy Policy",
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Text(
-                          "|",
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {},
-                        child: MouseRegion(
-                          cursor: SystemMouseCursors.click,
-                          child: Text(
-                            "Terms & Conditions",
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      )
-                    ],
-                  )
+                  SocialMediaItemBtn()
                 ],
               )
             ],

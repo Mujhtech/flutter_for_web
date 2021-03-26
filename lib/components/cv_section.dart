@@ -1,8 +1,10 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_for_web/models/design_process.dart';
 import 'package:flutter_for_web/utils/constants.dart';
 import 'package:flutter_for_web/utils/screen_helper.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 final List<DesignProcess> designProcesses = [
@@ -19,13 +21,13 @@ final List<DesignProcess> designProcesses = [
         "A full stack allround developer thay may or may not include a guide for specific creative",
   ),
   DesignProcess(
-    title: "WRITE",
+    title: "SPEAK",
     imagePath: "assets/write.png",
     subtitle:
         "A full stack allround writer thay may or may not include a guide for specific creative",
   ),
   DesignProcess(
-    title: "PROMOTE",
+    title: "OPEN SOURCE",
     imagePath: "assets/promote.png",
     subtitle:
         "A full stack allround promoter thay may or may not include a guide for specific creative",
@@ -57,28 +59,25 @@ class CvSection extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                "BETTER DESIGN,\nBETTER EXPERIENCES",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w900,
-                  height: 1.8,
-                  fontSize: 18.0,
-                ),
-              ),
-              GestureDetector(
-                onTap: () {},
-                child: MouseRegion(
-                  cursor: SystemMouseCursors.click,
-                  child: Text(
-                    "DOWNLOAD CV",
-                    style: TextStyle(
-                      color: kPrimaryColor,
-                      fontWeight: FontWeight.w900,
-                      fontSize: 16.0,
-                    ),
-                  ),
-                ),
+              AnimatedTextKit(
+                isRepeatingAnimation: true,
+                animatedTexts: [
+                  RotateAnimatedText('BETTER DESIGN',
+                      textStyle: GoogleFonts.montserrat(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w900,
+                          color: Colors.white)),
+                  RotateAnimatedText('BETTER EXPERIENCE',
+                      textStyle: GoogleFonts.montserrat(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w900,
+                          color: Colors.white)),
+                  RotateAnimatedText('OPEN SOURCE CONTRIBUTOR',
+                      textStyle: GoogleFonts.montserrat(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w900,
+                          color: Colors.white)),
+                ],
               ),
             ],
           ),

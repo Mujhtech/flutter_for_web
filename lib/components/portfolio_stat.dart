@@ -5,10 +5,10 @@ import 'package:flutter_for_web/utils/screen_helper.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 final List<Stat> stats = [
-  Stat(count: "43", text: "Clients"),
-  Stat(count: "68+", text: "Projects"),
-  Stat(count: "17", text: "Awards"),
-  Stat(count: "10", text: "Years\nExperience"),
+  Stat(count: "20", text: "Clients"),
+  Stat(count: "10+", text: "Projects"),
+  Stat(count: "2", text: "Awards"),
+  Stat(count: "3", text: "Years\nExperience"),
 ];
 
 class PortfolioStats extends StatelessWidget {

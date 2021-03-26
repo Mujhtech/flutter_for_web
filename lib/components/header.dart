@@ -8,11 +8,10 @@ import 'package:google_fonts/google_fonts.dart';
 
 List<HeaderItem> headerItems = [
   HeaderItem(title: "HOME", onTap: () {}, index: 0),
-  HeaderItem(title: "MY INTRO", onTap: () {}, index: 1),
-  HeaderItem(title: "SERVICES", onTap: () {}, index: 0),
-  HeaderItem(title: "PORTFOLIO", onTap: () {}, index: 0),
-  HeaderItem(title: "TESTIMONIALS", onTap: () {}, index: 0),
-  HeaderItem(title: "BLOGS", onTap: () {}, index: 0),
+  HeaderItem(title: "INTRO", onTap: () {}, index: 1),
+  HeaderItem(title: "SKILLS", onTap: () {}, index: 4),
+  HeaderItem(title: "PORTFOLIO", onTap: () {}, index: 2),
+  HeaderItem(title: "CONTACT", onTap: () {}, index: 6),
   HeaderItem(title: "HIRE ME", onTap: () {}, isButton: true, index: 0),
 ];
 
@@ -70,7 +69,7 @@ class HeaderRow extends StatelessWidget {
                         padding: EdgeInsets.symmetric(
                             horizontal: 20.0, vertical: 5.0),
                         child: TextButton(
-                          onPressed: item.onTap,
+                          onPressed: Globals.scroll(item.index),
                           child: Text(
                             item.title,
                             style: TextStyle(
@@ -86,8 +85,9 @@ class HeaderRow extends StatelessWidget {
                       cursor: SystemMouseCursors.click,
                       child: Container(
                         margin: EdgeInsets.only(right: 30.0),
-                        child: GestureDetector(
-                          onTap: item.onTap,
+                        child: InkWell(
+                          hoverColor: Colors.white,
+                          onTap: Globals.scroll(item.index),
                           child: Text(
                             item.title,
                             style: TextStyle(

@@ -8,7 +8,6 @@ import 'package:flutter_for_web/components/header.dart';
 import 'package:flutter_for_web/components/portfolio_stat.dart';
 import 'package:flutter_for_web/components/skill_section.dart';
 import 'package:flutter_for_web/utils/globals.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:flutter_for_web/components/scroll_to_top.dart';
@@ -56,15 +55,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  ScrollController _scrollController =
-      ScrollController(initialScrollOffset: 25.0);
-  ItemScrollController _itemScrollController = ItemScrollController();
-  ItemPositionsListener _itemPositionListener = ItemPositionsListener.create();
-
-  void _scroll(int i) {
-    _itemScrollController.scrollTo(index: i, duration: Duration(seconds: 1));
-  }
-
   Widget sectionWidget(int i) {
     if (i == 0) {
       return Column(children: [
@@ -93,14 +83,10 @@ class _HomeState extends State<Home> {
     } else if (i == 4) {
       return SkillSection();
     } else if (i == 5) {
-      return SizedBox(
-        height: 40.0,
+      return ScrollToTop(
+        onPressed: () => Globals.scroll(0),
       );
     } else if (i == 6) {
-      return ScrollToTop(
-        onPressed: () => _scroll(0),
-      );
-    } else if (i == 7) {
       return Footer();
     } else {
       return Container();
@@ -114,85 +100,58 @@ class _HomeState extends State<Home> {
       endDrawer: Drawer(
         child: SafeArea(
           child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 16.0,
-              vertical: 24.0,
-            ),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      "< ",
-                      style: TextStyle(fontSize: 20, color: Colors.white),
-                    ),
-                    Text(
-                      "Mujeeb",
-                      style: GoogleFonts.dancingScript(
-                          fontSize: 20, color: Colors.white),
-                    ),
-                    Text(
-                      MediaQuery.of(context).size.width >= 1000
-                          ? " />\t\t"
-                          : " />",
-                      style: TextStyle(fontSize: 20, color: Colors.white),
-                    )
-                  ],
-                ),
-                ListView.separated(
-                  itemBuilder: (BuildContext context, int index) {
-                    return headerItems[index].isButton
-                        ? MouseRegion(
-                            cursor: SystemMouseCursors.click,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Colors.red,
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              padding: EdgeInsets.symmetric(horizontal: 28.0),
-                              child: TextButton(
-                                onPressed: headerItems[index].onTap,
-                                child: Text(
-                                  headerItems[index].title,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 13.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          )
-                        : ListTile(
-                            onTap: () => _scroll(headerItems[index].index),
-                            title: Text(
+            padding: const EdgeInsets.fromLTRB(20, 25, 20, 0),
+            child: ListView.separated(
+              itemBuilder: (BuildContext context, int index) {
+                return headerItems[index].isButton
+                    ? MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          padding: EdgeInsets.symmetric(horizontal: 28.0),
+                          child: TextButton(
+                            onPressed: headerItems[index].onTap,
+                            child: Text(
                               headerItems[index].title,
                               style: TextStyle(
                                 color: Colors.white,
+                                fontSize: 13.0,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
-                          );
-                  },
-                  separatorBuilder: (BuildContext context, int index) {
-                    return SizedBox(
-                      height: 10.0,
-                    );
-                  },
-                  itemCount: headerItems.length,
-                ),
-              ],
+                          ),
+                        ),
+                      )
+                    : ListTile(
+                        onTap: () => Globals.scroll(headerItems[index].index),
+                        title: Text(
+                          headerItems[index].title,
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      );
+              },
+              separatorBuilder: (BuildContext context, int index) {
+                return SizedBox(
+                  height: 10.0,
+                );
+              },
+              itemCount: headerItems.length,
             ),
           ),
         ),
       ),
       body: RawScrollbar(
-        controller: _scrollController,
+        controller: Globals.scrollController,
         thumbColor: Colors.white,
         thickness: 5.0,
         child: ScrollablePositionedList.builder(
-          itemScrollController: _itemScrollController,
-          itemPositionsListener: _itemPositionListener,
+          itemScrollController: Globals.itemScrollController,
+          itemPositionsListener: Globals.itemPositionListener,
           itemCount: 8,
           itemBuilder: (context, index) {
             return sectionWidget(index);

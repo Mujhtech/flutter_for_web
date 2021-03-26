@@ -6,24 +6,24 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 List<Skill> skills = [
   Skill(
-    skill: "Dart",
+    skill: "Dart/FLutter",
     percentage: 62,
   ),
   Skill(
     skill: "Javascript",
-    percentage: 80,
-  ),
-  Skill(
-    skill: "PHP",
-    percentage: 78,
+    percentage: 70,
   ),
   Skill(
     skill: "Python",
+    percentage: 35,
+  ),
+  Skill(
+    skill: "PHP/Laravel",
     percentage: 90,
   ),
   Skill(
-    skill: "GoLang",
-    percentage: 40,
+    skill: "HTML/CSS/Bootstrap",
+    percentage: 80,
   ),
 ];
 
@@ -80,7 +80,7 @@ class SkillSection extends StatelessWidget {
                         height: 10.0,
                       ),
                       Text(
-                        "This is all the skills listed below more will be added in due time. This is all the skills listed below more will be added in due time.",
+                        "Technologies I have worked with",
                         style: TextStyle(
                           color: kCaptionColor,
                           height: 1.5,

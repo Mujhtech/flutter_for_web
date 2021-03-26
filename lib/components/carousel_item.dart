@@ -22,22 +22,22 @@ List<CarouselItemModel> carouselItems = List.generate(
               AnimatedTextKit(
                 isRepeatingAnimation: true,
                 animatedTexts: [
-                  TypewriterAnimatedText('Flutter Developer',
+                  TyperAnimatedText('Flutter Developer',
                       textStyle: GoogleFonts.montserrat(
                           fontSize: 16,
                           fontWeight: FontWeight.w200,
                           color: Colors.white)),
-                  TypewriterAnimatedText('Web Developer',
+                  TyperAnimatedText('Web Developer',
                       textStyle: GoogleFonts.montserrat(
                           fontSize: 16,
                           fontWeight: FontWeight.w200,
                           color: Colors.white)),
-                  TypewriterAnimatedText('Elementor Lover',
+                  TyperAnimatedText('Elementor Lover',
                       textStyle: GoogleFonts.montserrat(
                           fontSize: 16,
                           fontWeight: FontWeight.w200,
                           color: Colors.white)),
-                  TypewriterAnimatedText('Divi Expert',
+                  TyperAnimatedText('Divi Expert',
                       textStyle: GoogleFonts.montserrat(
                           fontSize: 16,
                           fontWeight: FontWeight.w200,
@@ -50,8 +50,19 @@ List<CarouselItemModel> carouselItems = List.generate(
             height: 18.0,
           ),
           Text(
-            "Muhideen\nMUJEEB",
-            style: TextStyle(
+            "Muhideen",
+            style: GoogleFonts.montserrat(
+              color: Colors.white,
+              fontSize: 40.0,
+              height: 1.3,
+            ),
+          ),
+          SizedBox(
+            height: 5.0,
+          ),
+          Text(
+            "MUJEEB",
+            style: GoogleFonts.montserrat(
               color: Colors.white,
               fontSize: 40.0,
               fontWeight: FontWeight.w900,
